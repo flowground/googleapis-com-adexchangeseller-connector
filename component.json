@@ -1,0 +1,293 @@
+{
+    "title": "Ad Exchange Seller",
+    "description": "Accesses the inventory of Ad Exchange seller users and generates reports.",
+    "docsUrl": "https://developers.google.com/ad-exchange/seller-rest/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/adexchangeseller/v2.0/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://www.googleapis.com/adexchangeseller/v2.0",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "oauth2": {
+                "label": "Oauth 2.0 authentication",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://www.googleapis.com/oauth2/v4/token",
+            "scopes": [
+                "https://www.googleapis.com/auth/adexchange.seller",
+                "https://www.googleapis.com/auth/adexchange.seller.readonly"
+            ]
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "adexchangeseller_accounts_list": {
+            "main": "./lib/actions/adexchangeseller_accounts_list.js",
+            "title": "List all accounts available to this Ad Exchange account.",
+            "description": "List all accounts available to this Ad Exchange account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_get": {
+            "main": "./lib/actions/adexchangeseller_accounts_get.js",
+            "title": "Get information about the selected Ad Exchange account.",
+            "description": "Get information about the selected Ad Exchange account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_adclients_list": {
+            "main": "./lib/actions/adexchangeseller_accounts_adclients_list.js",
+            "title": "List all ad clients in this Ad Exchange account.",
+            "description": "List all ad clients in this Ad Exchange account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_adclients_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_customchannels_list": {
+            "main": "./lib/actions/adexchangeseller_accounts_customchannels_list.js",
+            "title": "List all custom channels in the specified ad client for this Ad Exchange account.",
+            "description": "List all custom channels in the specified ad client for this Ad Exchange account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_customchannels_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_customchannels_get": {
+            "main": "./lib/actions/adexchangeseller_accounts_customchannels_get.js",
+            "title": "Get the specified custom channel from the specified ad client.",
+            "description": "Get the specified custom channel from the specified ad client.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_customchannels_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_urlchannels_list": {
+            "main": "./lib/actions/adexchangeseller_accounts_urlchannels_list.js",
+            "title": "List all URL channels in the specified ad client for this Ad Exchange account.",
+            "description": "List all URL channels in the specified ad client for this Ad Exchange account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_urlchannels_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_alerts_list": {
+            "main": "./lib/actions/adexchangeseller_accounts_alerts_list.js",
+            "title": "List the alerts for this Ad Exchange account.",
+            "description": "List the alerts for this Ad Exchange account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_alerts_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_metadata_dimensions_list": {
+            "main": "./lib/actions/adexchangeseller_accounts_metadata_dimensions_list.js",
+            "title": "List the metadata for the dimensions available to this AdExchange account.",
+            "description": "List the metadata for the dimensions available to this AdExchange account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_metadata_dimensions_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_metadata_metrics_list": {
+            "main": "./lib/actions/adexchangeseller_accounts_metadata_metrics_list.js",
+            "title": "List the metadata for the metrics available to this AdExchange account.",
+            "description": "List the metadata for the metrics available to this AdExchange account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_metadata_metrics_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_preferreddeals_list": {
+            "main": "./lib/actions/adexchangeseller_accounts_preferreddeals_list.js",
+            "title": "List the preferred deals for this Ad Exchange account.",
+            "description": "List the preferred deals for this Ad Exchange account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_preferreddeals_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_preferreddeals_get": {
+            "main": "./lib/actions/adexchangeseller_accounts_preferreddeals_get.js",
+            "title": "Get information about the selected Ad Exchange Preferred Deal.",
+            "description": "Get information about the selected Ad Exchange Preferred Deal.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_preferreddeals_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_reports_generate": {
+            "main": "./lib/actions/adexchangeseller_accounts_reports_generate.js",
+            "title": "Generate an Ad Exchange report based on the report request sent in the query parameters. Returns the result as JSON; to retrieve output in CSV format specify \"alt=csv\" as a query parameter.",
+            "description": "Generate an Ad Exchange report based on the report request sent in the query parameters. Returns the result as JSON; to retrieve output in CSV format specify \"alt=csv\" as a query parameter.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_reports_generate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_reports_saved_list": {
+            "main": "./lib/actions/adexchangeseller_accounts_reports_saved_list.js",
+            "title": "List all saved reports in this Ad Exchange account.",
+            "description": "List all saved reports in this Ad Exchange account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_reports_saved_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "adexchangeseller_accounts_reports_saved_generate": {
+            "main": "./lib/actions/adexchangeseller_accounts_reports_saved_generate.js",
+            "title": "Generate an Ad Exchange report based on the saved report ID sent in the query parameters.",
+            "description": "Generate an Ad Exchange report based on the saved report ID sent in the query parameters.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/adexchangeseller_accounts_reports_saved_generate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
